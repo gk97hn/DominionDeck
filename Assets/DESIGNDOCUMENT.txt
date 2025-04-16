@@ -1,0 +1,6 @@
+GameManager --> This Singleton GameManager class ensures we have a single point of access for core game systems it  initializes the CardFactory and holds references to player and enemy controllers.
+GameStateMachine --> This implements the State pattern to manage different game phases "player turn" "enemy turn" "game over" each state has its own behavior and can transition to other states.
+EventManager -->The Observer pattern is implemented here to allow decoupled communication between game systems components can subscribe to events without knowing about each other.
+CardData --> ScriptableObjects are used for card data ballowing designers to create and modify cards without code changes.
+CardFactory --> The Factory pattern centralizes card creation logic making it easy to modify how cards are instantiated.
+CardCommand --> The Command pattern encapsulates card play actions allowing for potential undo functionality and queuing of actions.
