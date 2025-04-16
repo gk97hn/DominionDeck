@@ -50,7 +50,7 @@ public class MinionManager : MonoBehaviour
     }
     public bool DamageFirstPlayerMinion(int damage)
     {
-        if (_activeMinions.Count == 0) return false;
+        if (_activeMinions.Count == 0) { return false; }
 
         return _activeMinions[0].TakeDamage(damage);
        

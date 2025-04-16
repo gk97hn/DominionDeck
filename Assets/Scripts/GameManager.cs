@@ -46,9 +46,13 @@ public class GameManager : MonoBehaviour
         StateMachine.ChangeState(StateMachine.PlayerTurn);
     }
     public void OnEndTurn() 
-    {
-        StateMachine.ChangeState(StateMachine.EnemyTurn);
-        Player.DrawCard();
+    { 
+        if(StateMachine.GetCurrentState() is PlayerTurnState) 
+        {
+            StateMachine.ChangeState(StateMachine.EnemyTurn);
+            Player.DrawCard();
+        }
+       
     }
     private void SetupEventListeners()
     {

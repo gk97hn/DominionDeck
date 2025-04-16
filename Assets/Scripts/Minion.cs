@@ -22,7 +22,11 @@ public class Minion : MonoBehaviour
 
     public bool TakeDamage(int amount)
     {
-        if (!IsAlive || IsOnFight) return false;
+        if (!IsOnFight)
+        {
+            return false;
+        }
+            if (!IsAlive) { return false; }
 
         _currentHealth = Mathf.Max(0, _currentHealth - amount);
         EventManager.Instance.Raise(new MinionDamagedEvent(this, amount));

@@ -82,8 +82,9 @@ public class EnemyController : IController
                 break;
             case CardEffect.EffectType.Heal:
 
-                var player1 = GameManager.Instance.Enemy;
-                EventManager.Instance.Raise(new EnemyHealthChangedEvent(effect.value));
+                var enemy = GameManager.Instance.Enemy;
+                enemy.Heal(effect.value);
+             
                
                 break;
 
@@ -119,5 +120,11 @@ public class EnemyController : IController
         {
             EventManager.Instance.Raise(new GameOverEvent(true));
         }
+    }
+    public void Heal(int amount)
+    {
+        Health = Mathf.Max(0, Health + amount);
+        EventManager.Instance.Raise(new EnemyHealthChangedEvent(Health));
+
     }
 }
